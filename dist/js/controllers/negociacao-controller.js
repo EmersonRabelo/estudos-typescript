@@ -10,6 +10,8 @@ export class NegociacaoController {
     adiciona() {
         const negociacao = this.criaNegociacao();
         this.negociacoes.add(negociacao);
+        //Programação defenciva evita esse tipo de modificação:
+        //negociacao.data.setDate(12);
         console.log(this.negociacoes.list());
         this.limparFormulario();
     }

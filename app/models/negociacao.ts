@@ -1,19 +1,21 @@
 export class Negociacao {
 
-    // Aprendendo o conceito readonly
-    public readonly data: Date;
+    //Programação defenciva, impedindo metodos que alterem meu obj date
+    private _data: Date;
     
-    private _quantidade: number;
+    // Aprendendo o conceito readonly
+    public readonly quantidade: number;
     private _valor: number;
 
     constructor(data: Date, quantidade: number, valor: number) {
-        this.data = data;
-        this._quantidade = quantidade;
+        this._data = data;
+        this.quantidade = quantidade;
         this._valor = valor;
     }
 
-    get quantidade(): number {
-        return this._quantidade;
+    get data(){
+        const data = new Date(this._data.getTime())
+        return data;
     }
 
     get valor(): number {
@@ -21,6 +23,6 @@ export class Negociacao {
     }
 
     get volume(): number {
-        return this._quantidade * this._valor;
+        return this.quantidade * this._valor;
     }
 }
